@@ -1,3 +1,22 @@
 <resources>
-    <string name="app_name">slide_3</string>
+    <string name="app_name">button+image</string>
+    <string name="feb_cal1">2월달 달력1</string>
+    <string name="feb_option">2월달 설정</string>
+    <string name="c1x1">1행 1열</string>
+    <string name="c1x2">1행 2열</string>
+    <string name="c1x3">1행 3열</string>
+    <string name="c1x4">1행 4열</string>
+    <string name="c1x5">1행 5열</string>
+    <string name="c1x6">1행 6열</string>
+    <string name="c1x7">1행 7열</string>
+
+    <string name="c2x1">2행 1열</string>
+
+    <string name="p0001">메인페이지</string>
+    <string name="p0101">일정 등록, 수정 페이지</string>
+    <string name="p0102">일정 확인 페이지</string>
+    <string name="p0103">하루 일정 페이지</string>
+    <string name="p0104">등록 일정 확인 페이지</string>
+
+
 </resources>

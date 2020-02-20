@@ -9,6 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".P0102"></activity>
+        <activity android:name=".CheckDailyPlan" />
+        <activity android:name=".ModifyPlan" />
+        <activity android:name=".CheckAllPlan" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

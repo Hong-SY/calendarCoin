@@ -1,15 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+
+<AbsoluteLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:gravity="center"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/feb2">
 
-    <EditTextText
-        android:id="@+id/editText"
+    <AbsoluteLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="horizontal">
+
+        <Button
+        android:id="@+id/modifyPlan"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="EditText" />
+        android:layout_height="40dp"
+        android:layout_x="263dp"
+        android:layout_y="85dp"
+        android:background="#10ff0011"
+        android:contentDescription="@string/p0101"
+        android:text="@string/p0101" />
+
+        <Button
+            android:id="@+id/checkAllPlan"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_x="265dp"
+            android:layout_y="135dp"
+            android:background="#10ff0011"
+            android:contentDescription="@string/p0104"
+            android:text="@string/p0104" />
+
+        //페이지 설명 나중에 지워버리기
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="72dp"
+            android:layout_y="59dp"
+            android:contentDescription="@string/p0001"
+            android:text="P0001 => 메인페이지 입니다.\n 달력을 볼 수 있습니다." />
+
+    </AbsoluteLayout>
+
+    <Button
+        android:id="@+id/checkDailyPlan"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_x="292dp"
+        android:layout_y="301dp"
+        android:background="#10ff0011"
+        android:contentDescription="@string/p0103"
+        android:text="@string/p0103" />
 
 
-</LinearLayout>
+
+
+</AbsoluteLayout>
