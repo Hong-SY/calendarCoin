@@ -11,3 +11,9 @@ hello
 world!! i am hong jae this is my first commit
 
 시험삼아 이거 내용 한번 바꿔봄
+
+<홍재 2/20>
+아 커밋 추가로 지금 button을 first fragment에 구현했음.
+근데 이걸는 fragment니까 내가 화면을 움직이면 버튼은 그 자리에 있지 않단 말이지?
+그래서 view pager인 main_activity.xml 에 내가 버튼을 넣으면 슬라이드로 버튼을 움직여도 버튼이 그대로 남아있는지 알아보고 진행해야 할 것 같아
+
