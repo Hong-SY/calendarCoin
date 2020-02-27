@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.P0102">
+    tools:context=".activity.P0103">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" P0102 => 이곳은 일정 확인 페이지 입니다.\n 일정 하나의 정보를 확인할 수 있습니다."
+        android:text=" P0103 => 이곳은 check_daily_plan 입니다.\n 24시간의 일정을 확인하세요."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
