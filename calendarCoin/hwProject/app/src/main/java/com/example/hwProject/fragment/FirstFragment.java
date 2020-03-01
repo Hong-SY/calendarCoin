@@ -40,21 +40,21 @@ public class FirstFragment extends Fragment {
 
     // Inflate the view for the fragment based on layout XML
         @Override
-        public View onCreateView (LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState){
+            public View onCreateView (LayoutInflater inflater, ViewGroup container,
+                    Bundle savedInstanceState){
 
-        // 2월20일 fragment에서 버튼을 가져올 때는 위와 같은 문법 사용
+                // 2월20일 fragment에서 버튼을 가져올 때는 위와 같은 문법 사용
 
-            View view = inflater.inflate(R.layout.fragment_first, container, false);
+                View view = inflater.inflate(R.layout.fragment_first, container, false);
 
-            Button btnCheckAllPlan = (Button)view.findViewById(R.id.checkAllPlan); // checkAllPlan 버튼
-            btnCheckAllPlan.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(getActivity(), P0104.class);
-                    startActivity(intent);
-                }
-            });
+                Button btnCheckAllPlan = (Button)view.findViewById(R.id.checkAllPlan); // checkAllPlan 버튼
+                btnCheckAllPlan.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getActivity(), P0104.class);
+                        startActivity(intent);
+                    }
+                });
 
             Button btnModifyPlan = (Button)view.findViewById(R.id.modifyPlan); // modifyPlan 버튼
             btnModifyPlan.setOnClickListener(new View.OnClickListener() {

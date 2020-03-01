@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/addplan">
+    android:orientation="vertical">
+    //android:background="@drawable/addplan"> 이거 잠시 보류
 
 
     <!-- TODO : margin 이라고 쓰여있는 부분 조절해서 정확한 배치하기 -->
@@ -18,9 +18,9 @@
         android:orientation="vertical">
 
         <EditText
+            android:id="@+id/inputPlan"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textColor="#FFFFFF"
             />
 
     </LinearLayout>
@@ -34,6 +34,56 @@
         android:layout_weight="1"
         android:layout_marginHorizontal="22dp"
         android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="시작시간 : "
+                android:textSize="20dp"/>
+
+            <Spinner
+                android:id="@+id/spinnerTimeStartHour"
+                android:entries="@array/hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="시"
+                android:textSize="20dp"/>
+
+            <Spinner
+                android:id="@+id/spinnerTimeStartMin"
+                android:entries="@array/min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="분"
+                android:textSize="20dp"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+
+        </LinearLayout>
 
     </LinearLayout>
 

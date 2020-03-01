@@ -18,5 +18,7 @@
     <string name="p0103">하루 일정 페이지</string>
     <string name="p0104">등록 일정 확인 페이지</string>
 
+    <string name="savedata_private_key">com.example.PRIVATE_FILE_KEY</string>
+
 
 </resources>
