@@ -1,0 +1,44 @@
+{
+  "schedules": [
+    {
+      "title": "식사약속",
+      "detail": "경원이랑 저녁식사",
+      "toDate": "2020/03/04",
+      "fromDate": "2020/03/04",
+      "toTime": "1800",
+      "fromTime": "1900",
+      "alarm": "none",
+      "priority": "3"
+    },
+    {
+      "title": "데이터베이스 수업",
+      "detail": "2020 1학기 이종영 교수님",
+      "toDate": "2020/07/15",
+      "fromDate": "2020/03/16",
+      "toTime": "0900",
+      "fromTime": "1015",
+      "alarm": "mute",
+      "priority": "3"
+    },
+    {
+      "title": "공학세미나",
+      "detail": "임베디드 시스템 연구실 세미나",
+      "toDate": "2020/03/01",
+      "fromDate": "2020/12/31",
+      "toTime": "1600",
+      "fromTime": "1700",
+      "alarm": "vibrate",
+      "priority": "3"
+    },
+    {
+      "title": "취직활동 기간",
+      "detail": "삼성전자/ SK하이닉스",
+      "toDate": "2021/01/01",
+      "fromDate": "2021/02/28",
+      "toTime": "0000",
+      "fromTime": "2400",
+      "alarm": "bell",
+      "priority": "1"
+    }
+  ]
+}
