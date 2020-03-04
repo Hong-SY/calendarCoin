@@ -124,8 +124,16 @@ public class MainActivity extends AppCompatActivity {
                 schedule.setDetail(scheduleObject.getString("detail"));
                 schedule.setToDate(scheduleObject.getString("toDate"));
                 schedule.setFromDate(scheduleObject.getString("fromDate"));
-                schedule.setToTime(scheduleObject.getString("toTime"));
-                schedule.setFromTime(scheduleObject.getString("fromTime"));
+
+                //홍재가 추가한 부분
+                schedule.setFromDate(scheduleObject.getString("startHour"));
+                schedule.setFromDate(scheduleObject.getString("startMin"));
+                schedule.setFromDate(scheduleObject.getString("endHour"));
+                schedule.setFromDate(scheduleObject.getString("endMin"));
+                schedule.setFromDate(scheduleObject.getString("day"));
+                //여기까지
+
+
                 schedule.setAlarm(scheduleObject.getString("alarm"));
                 schedule.setPriority(scheduleObject.getString("priority"));
 

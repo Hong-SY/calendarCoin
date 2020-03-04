@@ -14,10 +14,17 @@ public class Schedule {
     private String detail;
     private String toDate;
     private String fromDate;
-    private String toTime;
-    private String fromTime;
     private String alarm;
     private String priority;
+
+    //홍재가 추가한 변수
+    private String startHour; //선택한 시작 시간
+    private String startMin; //선택한 시간 분
+
+    private String endHour; //선택한 종료 시간
+    private String endMin; //선택한 종료 분
+
+    private String[] day = new String[7]; //반복할 요일
 
     public Schedule() {
     }
@@ -59,22 +66,6 @@ public class Schedule {
         this.fromDate = fromDate;
     }
 
-    public String getToTime() {
-        return toTime;
-    }
-
-    public void setToTime(String toTime) {
-        this.toTime = toTime;
-    }
-
-    public String getFromTime() {
-        return fromTime;
-    }
-
-    public void setFromTime(String fromTime) {
-        this.fromTime = fromTime;
-    }
-
     public String getAlarm() {
         return alarm;
     }
@@ -91,6 +82,30 @@ public class Schedule {
         this.priority = priority;
     }
 
+    /** 오 이렇게 하면 초록색 글씨 나옴
+     * 홍재가 추가한 부분
+     */
+
+    public String getStartHour() {return startHour; }
+
+    public void setStartHour(String startHour) { this.startHour = startHour;}
+
+    public String getStartMin() { return startMin; }
+
+    public void setStartMin(String startMin) { this.startMin = startMin; }
+
+    public String getEndHour() { return endHour; }
+
+    public void setEndHour(String endHour) { this.endHour = endHour; }
+
+    public String getEndMin() { return endMin; }
+
+    public void setEndMin(String endMin) { this.endMin = endMin; }
+
+    public String[] getDay() { return day; }
+
+    public void setDay(String[] day) { this.day = day; }
+
     @Override
     public String toString() {
         return "Schedule{" +
@@ -98,8 +113,11 @@ public class Schedule {
                 ", detail='" + detail + '\'' +
                 ", toDate='" + toDate + '\'' +
                 ", fromDate='" + fromDate + '\'' +
-                ", toTime='" + toTime + '\'' +
-                ", fromTime='" + fromTime + '\'' +
+                ", startHour='" + startHour + '\'' +
+                ", startMin='" + startMin + '\'' +
+                ", endHour='" + endHour + '\'' +
+                ", endMin='" + endMin + '\'' +
+                ", day='" + day +'\''+
                 ", alarm='" + alarm + '\'' +
                 ", priority='" + priority + '\'' +
                 '}';
