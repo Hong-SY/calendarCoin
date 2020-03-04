@@ -1,22 +1,18 @@
 package com.example.hwProject.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hwProject.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /*
 P0101 일정 등록, 수정페이지
@@ -53,7 +49,7 @@ public class P0101 extends AppCompatActivity {
 
 
         //레이어 첫번째 : 계획 제목 적기
-        EditText textInputPlan = (EditText) findViewById(R.id.inputPlan); //사용자가 입력한 계획의 제목
+        final EditText textInputPlan = (EditText) findViewById(R.id.inputPlan); //사용자가 입력한 계획의 제목
         String stingTextInputPlan = textInputPlan.getText().toString(); //사용자가 입력한 계획의 제목 string 형태로 받음
 
 
@@ -129,7 +125,20 @@ public class P0101 extends AppCompatActivity {
             public void onClick(View view) {
 
                 //TODO : saveButton의 기능을 구현한다.
-
+                //textInputPlan
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.put("title", textInputPlan.getText().toString());
+                    jsonObject.put("toDate", "test");
+                    jsonObject.put("fromDate", "test");
+                    jsonObject.put("toTime", "test");
+                    jsonObject.put("fromTime", "test");
+                    jsonObject.put("alarm", "test");
+                    jsonObject.put("priority", "test");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(jsonObject);
             }
 
         });
