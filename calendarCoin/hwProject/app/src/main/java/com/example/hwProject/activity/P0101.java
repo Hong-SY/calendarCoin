@@ -126,19 +126,7 @@ public class P0101 extends AppCompatActivity {
 
                 //TODO : saveButton의 기능을 구현한다.
                 //textInputPlan
-                JSONObject jsonObject = new JSONObject();
-                try {
-                    jsonObject.put("title", textInputPlan.getText().toString());
-                    jsonObject.put("toDate", "test");
-                    jsonObject.put("fromDate", "test");
-                    jsonObject.put("toTime", "test");
-                    jsonObject.put("fromTime", "test");
-                    jsonObject.put("alarm", "test");
-                    jsonObject.put("priority", "test");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                System.out.println(jsonObject);
+
             }
 
         });
@@ -152,6 +140,22 @@ public class P0101 extends AppCompatActivity {
                 //TODO : cancleButton의 기능을 구현한다.
             }
         });
+
     }
 
+    private JSONObject makeSchedule(String title, String toDate, String fromDate, String toTime, String fromTime, String alarm, String priority){
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("title", title);
+            jsonObject.put("toDate", toDate);
+            jsonObject.put("fromDate", fromDate);
+            jsonObject.put("toTime", toTime);
+            jsonObject.put("fromTime", fromTime);
+            jsonObject.put("alarm", alarm);
+            jsonObject.put("priority", priority);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject;
+    }
 }
