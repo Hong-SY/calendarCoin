@@ -1,18 +1,21 @@
 package com.example.hwProject.activity;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
-<<<<<<< HEAD
 import android.widget.TextView;
 import android.widget.Toast;
-=======
-
-import androidx.appcompat.app.AppCompatActivity;
->>>>>>> 8096109d110cba46191b7598a75bcac604d20440
 
 import com.example.hwProject.R;
 import com.example.hwProject.objects.Schedule;
@@ -42,51 +45,8 @@ public class P0101 extends AppCompatActivity {
          * TODO : 이제 xml에 입력한 값을 변수로 받아올 수 있으니 이걸 data에 넣어줘야함
         */
 
-<<<<<<< HEAD
         Button saveButton = (Button) findViewById(R.id.saveButton);
         saveButton.setOnClickListener(new View.OnClickListener() {
-=======
-        //레이어 첫번째 : 계획 제목 적기
-        final EditText textInputPlan = (EditText) findViewById(R.id.inputPlan); //사용자가 입력한 계획의 제목
-        String stingTextInputPlan = textInputPlan.getText().toString(); //사용자가 입력한 계획의 제목 string 형태로 받음
-
-
-
-        //레이어 두번째 : 시간 설정하기
-        //Spinner로 받은 값 바인딩 시키기
-
-        Spinner timeStartHour = (Spinner)findViewById(R.id.spinnerTimeStartHour);
-        String  stringTimeStartHour = timeStartHour.getSelectedItem().toString();
-
-        Spinner timeStartMin = (Spinner)findViewById(R.id.spinnerTimeStartMin);
-        String  stringTimeStartMin = timeStartMin.getSelectedItem().toString();
-
-        Spinner timeEndHour = (Spinner)findViewById(R.id.spinnerTimeEndHour);
-        String  stringTimeEndHour = timeEndHour.getSelectedItem().toString();
-
-        Spinner timeEndMin = (Spinner)findViewById(R.id.spinnerTimeEndMin);
-        String  stringTimeEndMin = timeEndMin.getSelectedItem().toString();
-
-
-
-
-        /* TODO : 구현 실패한 곳 -> 나중에 지우기
-        //Spinner객체 생성
-        final Spinner hourSpinner = (Spinner) findViewById(R.id.spinnerTimeStartHour);
-
-        hourSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-        });
-
-        //Spinner객체 생성
-        final Spinner minSpinner = (Spinner) findViewById(R.id.spinnerTimeStartMin);
-
-        minSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
->>>>>>> 8096109d110cba46191b7598a75bcac604d20440
 
             @Override
             public void onClick(View view) {
@@ -128,15 +88,7 @@ public class P0101 extends AppCompatActivity {
                 if(cb7.isChecked() == true) day[6] = cb7.getText().toString();
                 schedule.setDay(day);
 
-<<<<<<< HEAD
                 textView.setText(schedule.toString());
-=======
-            @Override
-            public void onClick(View view) {
-
-                //TODO : saveButton의 기능을 구현한다.
-                //textInputPlan
->>>>>>> 8096109d110cba46191b7598a75bcac604d20440
 
             }
 
@@ -146,15 +98,13 @@ public class P0101 extends AppCompatActivity {
         cancleButton.setOnClickListener(new View.OnClickListener(){
 
             @Override
-            public  void  onClick(View view){
+            public  void  onClick(View view) {
 
                 //TODO : cancleButton의 기능을 구현한다.
+
             }
         });
-
     }
-<<<<<<< HEAD
-=======
 
     private JSONObject makeSchedule(String title, String toDate, String fromDate, String toTime, String fromTime, String alarm, String priority){
         JSONObject jsonObject = new JSONObject();
@@ -171,5 +121,9 @@ public class P0101 extends AppCompatActivity {
         }
         return jsonObject;
     }
->>>>>>> 8096109d110cba46191b7598a75bcac604d20440
+
+
+
 }
+
+
