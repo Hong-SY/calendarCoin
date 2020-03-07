@@ -1,27 +1,29 @@
 package com.example.hwProject.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hwProject.R;
 import com.example.hwProject.objects.Schedule;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 /*
 P0101 일정 등록, 수정페이지
@@ -102,11 +104,12 @@ public class P0101 extends AppCompatActivity {
 
                 //TODO : cancleButton의 기능을 구현한다.
 
+
             }
         });
     }
 
-    private JSONObject makeSchedule(String title, String toDate, String fromDate, String toTime, String fromTime, String alarm, String priority){
+    private String makeSchedule(String title, String toDate, String fromDate, String toTime, String fromTime, String alarm, String priority){
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("title", title);
@@ -119,11 +122,62 @@ public class P0101 extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return jsonObject;
+        return jsonObject.toString();
+    }
+    private String read(Context context, String fileName) {
+        try {
+            FileInputStream fis = context.openFileInput(fileName);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader bufferedReader = new BufferedReader(isr);
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                sb.append(line);
+            }
+            return sb.toString();
+        } catch (FileNotFoundException fileNotFound) {
+            return null;
+        } catch (IOException ioException) {
+            return null;
+        }
     }
 
+    private boolean create(Context context, String fileName, String jsonString){
+        String FILENAME = "storage.json";
+        try {
+            FileOutputStream fos = context.openFileOutput(fileName,Context.MODE_PRIVATE);
+            if (jsonString != null) {
+                fos.write(jsonString.getBytes());
+            }
+            fos.close();
+            return true;
+        } catch (FileNotFoundException fileNotFound) {
+            return false;
+        } catch (IOException ioException) {
+            return false;
+        }
 
+    }
 
+    public boolean isFilePresent(Context context, String fileName) {
+        String path = context.getFilesDir().getAbsolutePath() + "/" + fileName;
+        File file = new File(path);
+        return file.exists();
+    }
+    /* 실제 사용시 예시
+    boolean isFilePresent = isFilePresent(getActivity(), "storage.json");
+    if(isFilePresent) {
+       String jsonString = read(getActivity(), "storage.json");
+       //do the json parsing here and do the rest of functionality of app
+    } else {
+       boolean isFileCreated = create(getActivity, "storage.json", "{}");
+       if(isFileCreated) {
+         //proceed with storing the first todo  or show ui
+       } else {
+         //show error or try again.
+       }
+    }
+     */
 }
 
 
