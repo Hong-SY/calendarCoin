@@ -143,7 +143,7 @@ public class P0101 extends AppCompatActivity {
     }
 
     private boolean create(Context context, String fileName, String jsonString){
-        String FILENAME = "storage.json";
+        //String FILENAME = "storage.json";
         try {
             FileOutputStream fos = context.openFileOutput(fileName,Context.MODE_PRIVATE);
             if (jsonString != null) {
