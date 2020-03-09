@@ -1,6 +1,5 @@
 package com.example.hwProject.activity;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,18 +11,11 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hwProject.R;
+import com.example.hwProject.module.FileManage;
 import com.example.hwProject.objects.Schedule;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 /*
 P0101 일정 등록, 수정페이지
@@ -33,6 +25,7 @@ P0101 일정 등록, 수정페이지
 public class P0101 extends AppCompatActivity {
 
     Schedule schedule = new Schedule();
+    FileManage fm = new FileManage();
 
     TextView textView; //이거 출력 실험용이므로 실험이 끝나면 지워줄꺼임
     String[] day = new String[7]; //반복할 요일
@@ -89,8 +82,24 @@ public class P0101 extends AppCompatActivity {
                 if(cb6.isChecked() == true) day[5] = cb6.getText().toString();
                 if(cb7.isChecked() == true) day[6] = cb7.getText().toString();
                 schedule.setDay(day);
-
                 textView.setText(schedule.toString());
+
+
+                String jsonstr = makeSchedule(schedule.getTitle(),"test","","","test","test", "test");
+
+                boolean isFilePresent = fm.isFilePresent(getApplicationContext(), "storage.json");
+                if(isFilePresent) {
+                   String jsonString = fm.read(getApplicationContext(), "storage.json");
+                   //do the json parsing here and do the rest of functionality of app
+                } else {
+                   boolean isFileCreated = fm.create(getApplicationContext(), "storage.json", jsonstr);
+                   if(isFileCreated) {
+                     //proceed with storing the first todo  or show ui
+                   } else {
+                     //show error or try again.
+                   }
+                }
+                System.out.println(fm.read(getApplicationContext(), "storage.json"));
 
             }
 
@@ -124,60 +133,7 @@ public class P0101 extends AppCompatActivity {
         }
         return jsonObject.toString();
     }
-    private String read(Context context, String fileName) {
-        try {
-            FileInputStream fis = context.openFileInput(fileName);
-            InputStreamReader isr = new InputStreamReader(fis);
-            BufferedReader bufferedReader = new BufferedReader(isr);
-            StringBuilder sb = new StringBuilder();
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                sb.append(line);
-            }
-            return sb.toString();
-        } catch (FileNotFoundException fileNotFound) {
-            return null;
-        } catch (IOException ioException) {
-            return null;
-        }
-    }
 
-    private boolean create(Context context, String fileName, String jsonString){
-        //String FILENAME = "storage.json";
-        try {
-            FileOutputStream fos = context.openFileOutput(fileName,Context.MODE_PRIVATE);
-            if (jsonString != null) {
-                fos.write(jsonString.getBytes());
-            }
-            fos.close();
-            return true;
-        } catch (FileNotFoundException fileNotFound) {
-            return false;
-        } catch (IOException ioException) {
-            return false;
-        }
-
-    }
-
-    public boolean isFilePresent(Context context, String fileName) {
-        String path = context.getFilesDir().getAbsolutePath() + "/" + fileName;
-        File file = new File(path);
-        return file.exists();
-    }
-    /* 실제 사용시 예시
-    boolean isFilePresent = isFilePresent(getActivity(), "storage.json");
-    if(isFilePresent) {
-       String jsonString = read(getActivity(), "storage.json");
-       //do the json parsing here and do the rest of functionality of app
-    } else {
-       boolean isFileCreated = create(getActivity, "storage.json", "{}");
-       if(isFileCreated) {
-         //proceed with storing the first todo  or show ui
-       } else {
-         //show error or try again.
-       }
-    }
-     */
 }
 
 

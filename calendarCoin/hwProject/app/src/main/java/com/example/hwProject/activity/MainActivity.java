@@ -1,15 +1,15 @@
 package com.example.hwProject.activity;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.os.Bundle;
-
-import com.example.hwProject.fragment.FirstFragment;
 import com.example.hwProject.R;
+import com.example.hwProject.fragment.FirstFragment;
 import com.example.hwProject.fragment.SecondFragment;
 import com.example.hwProject.fragment.ThirdFragment;
 import com.example.hwProject.objects.Schedule;
@@ -66,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-
                     return FirstFragment.newInstance(0, "Page # 1");
                 case 1:
                     return SecondFragment.newInstance(1, "Page # 2");
