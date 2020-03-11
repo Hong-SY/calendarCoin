@@ -117,7 +117,13 @@ public class Schedule {
                 ", startMin='" + startMin + '\'' +
                 ", endHour='" + endHour + '\'' +
                 ", endMin='" + endMin + '\'' +
-                ", day='" + day +'\''+
+                ", day[0]='" + day[0] +'\''+
+                ", day[1]='" + day[1] +'\''+
+                ", day[2]='" + day[2] +'\''+
+                ", day[3]='" + day[3] +'\''+
+                ", day[4]='" + day[4] +'\''+
+                ", day[5]='" + day[5] +'\''+
+                ", day[6]='" + day[6] +'\''+
                 ", alarm='" + alarm + '\'' +
                 ", priority='" + priority + '\'' +
                 '}';
