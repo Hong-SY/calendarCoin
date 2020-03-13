@@ -32,7 +32,7 @@ public class P0101 extends AppCompatActivity {
     TextView textView; //이거 출력 실험용이므로 실험이 끝나면 지워줄꺼임
 
     String[] day = new String[7]; //반복할 요일
-    CheckBox[] cb = new CheckBox[7]; //요일 체크박스 설정
+    CheckBox[] cbDay = new CheckBox[7]; //요일 체크박스 설정
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,15 +69,15 @@ public class P0101 extends AppCompatActivity {
                 schedule.setEndMin(timeEndMin.getSelectedItem().toString());
 
                 //최홍재 레이더 세번째 : 반복 요일 설정하기
-                cb[0] = (CheckBox)findViewById(R.id.checkBoxMon);
-                cb[1] = (CheckBox)findViewById(R.id.checkBoxTue);
-                cb[2] = (CheckBox)findViewById(R.id.checkBoxWed);
-                cb[3] = (CheckBox)findViewById(R.id.checkBoxThu);
-                cb[4] = (CheckBox)findViewById(R.id.checkBoxFri);
-                cb[5] = (CheckBox)findViewById(R.id.checkBoxSat);
-                cb[6] = (CheckBox)findViewById(R.id.checkBoxSun);
+                cbDay[0] = (CheckBox)findViewById(R.id.checkBoxMon);
+                cbDay[1] = (CheckBox)findViewById(R.id.checkBoxTue);
+                cbDay[2] = (CheckBox)findViewById(R.id.checkBoxWed);
+                cbDay[3] = (CheckBox)findViewById(R.id.checkBoxThu);
+                cbDay[4] = (CheckBox)findViewById(R.id.checkBoxFri);
+                cbDay[5] = (CheckBox)findViewById(R.id.checkBoxSat);
+                cbDay[6] = (CheckBox)findViewById(R.id.checkBoxSun);
 
-                for(int i=0 ; i<cb.length ; i++) { if(cb[i].isChecked() == true) day[i] = cb[i].getText().toString();}
+                for(int i=0 ; i<cbDay.length ; i++) { if(cbDay[i].isChecked() == true) day[i] = cbDay[i].getText().toString();}
 
                 schedule.setDay(day);
 
