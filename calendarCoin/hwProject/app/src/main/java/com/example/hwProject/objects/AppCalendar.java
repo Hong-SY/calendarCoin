@@ -86,6 +86,14 @@ public class AppCalendar {
         }
     }
 
+    public int getYear() {
+        return this.year;
+    }
+
+    public int getMonth() {
+        return this.month;
+    }
+
     public ArrayList<Integer> getAppCalendar() {
         return this.appCalendar;
     }
