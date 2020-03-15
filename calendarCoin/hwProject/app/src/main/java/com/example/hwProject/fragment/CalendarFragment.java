@@ -4,9 +4,11 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.hwProject.R;
 import com.example.hwProject.objects.AppCalendar;
@@ -60,6 +62,21 @@ public class CalendarFragment extends Fragment {
         // Inflate the layout for this fragment
         ViewGroup rootView = (ViewGroup) inflater.inflate(
                 R.layout.fragment_calendar,container, false);
+
+        /** 2020.03.15 최홍재
+         * 화면에 달력 띄우기
+         * TODO : 석윤이가 만든 달력을 string 형태로 받아온다.
+         */
+        TextView textView = (TextView)rootView.findViewById(R.id.calendarTextView);
+        //textView.setText(TODO);
+
         return rootView;
+
+
+
     }
+
+
+
+
 }
