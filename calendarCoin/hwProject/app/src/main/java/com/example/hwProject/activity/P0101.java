@@ -1,6 +1,8 @@
 package com.example.hwProject.activity;
 
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hwProject.R;
+import com.example.hwProject.module.DbOpenHelper;
 import com.example.hwProject.module.FileManage;
 import com.example.hwProject.objects.Schedule;
 
@@ -34,10 +37,16 @@ public class P0101 extends AppCompatActivity {
     String[] day = new String[7]; //반복할 요일
     CheckBox[] cbDay = new CheckBox[7]; //요일 체크박스 설정
 
+    private DbOpenHelper mDbOpenHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_p0101);
+        mDbOpenHelper = new DbOpenHelper(this);
+        mDbOpenHelper.open();
+        mDbOpenHelper.create();
+
 
         /** 2020.03.05 최홍재
          * TODO : 이제 xml에 입력한 값을 변수로 받아올 수 있으니 이걸 data에 넣어줘야함
@@ -91,22 +100,36 @@ public class P0101 extends AppCompatActivity {
 
                 textView.setText(schedule.toString());
 
+// VERSION 1 내부 저장소 코드
+//                String jsonstr = makeSchedule(schedule.getTitle(),"test","","","test","test", "test");
+//
+//                boolean isFilePresent = fm.isFilePresent(getApplicationContext(), "storage.json");
+//                if(isFilePresent) {
+//                   String jsonString = fm.read(getApplicationContext(), "storage.json");
+//                   //do the json parsing here and do the rest of functionality of app
+//                } else {
+//                   boolean isFileCreated = fm.create(getApplicationContext(), "storage.json", jsonstr);
+//                   if(isFileCreated) {
+//                     //proceed with storing the first todo  or show ui
+//                   } else {
+//                     //show error or try again.
+//                   }
+//                }
+//                System.out.println(fm.read(getApplicationContext(), "storage.json"));
 
-                String jsonstr = makeSchedule(schedule.getTitle(),"test","","","test","test", "test");
-
-                boolean isFilePresent = fm.isFilePresent(getApplicationContext(), "storage.json");
-                if(isFilePresent) {
-                   String jsonString = fm.read(getApplicationContext(), "storage.json");
-                   //do the json parsing here and do the rest of functionality of app
-                } else {
-                   boolean isFileCreated = fm.create(getApplicationContext(), "storage.json", jsonstr);
-                   if(isFileCreated) {
-                     //proceed with storing the first todo  or show ui
-                   } else {
-                     //show error or try again.
-                   }
-                }
-                System.out.println(fm.read(getApplicationContext(), "storage.json"));
+                String title = "test DB";
+                String detail = "tksalngiasn";
+                String toDate = "";
+                String fromDate = "";
+                String alarm = "";
+                String priority = "";
+                String startHour = "";
+                String startMin = "";
+                String endHour = "";
+                String endMin = "";
+                mDbOpenHelper.open();
+                mDbOpenHelper.insertColumn(title, detail, toDate, fromDate, alarm, priority, startHour, startMin, endHour, endMin);
+                showDatabase(title);
 
             }
 
@@ -139,6 +162,44 @@ public class P0101 extends AppCompatActivity {
             e.printStackTrace();
         }
         return jsonObject.toString();
+    }
+
+    private void showDatabase(String sort){
+
+        Cursor iCursor = mDbOpenHelper.sortColumn(sort);
+        Log.d("showDatabase", "DB Size: " + iCursor.getCount());
+
+        while(iCursor.moveToNext()){
+            // String title, String detail, String toDate, String fromDate, String alarm, String priority, String startHour, String startMin
+            String tempTitle = iCursor.getString(iCursor.getColumnIndex("title"));
+            String tempDetail = iCursor.getString(iCursor.getColumnIndex("detail"));
+            String tempToDate = iCursor.getString(iCursor.getColumnIndex("toDate"));
+            String tempFromDate = iCursor.getString(iCursor.getColumnIndex("fromDate"));
+            String tempAlarm = iCursor.getString(iCursor.getColumnIndex("alarm"));
+            String tempPriority = iCursor.getString(iCursor.getColumnIndex("priority"));
+            String tempStartHour = iCursor.getString(iCursor.getColumnIndex("startHour"));
+            String tempStartMin = iCursor.getString(iCursor.getColumnIndex("startMin"));
+            String tempEndHour = iCursor.getString(iCursor.getColumnIndex("endHour"));
+            String tempEndMin = iCursor.getString(iCursor.getColumnIndex("endMin"));
+
+            JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject.put("title", tempTitle);
+                jsonObject.put("detail", tempDetail);
+                jsonObject.put("toDate", tempToDate);
+                jsonObject.put("fromDate", tempFromDate);
+                jsonObject.put("alarm", tempAlarm);
+                jsonObject.put("priority", tempPriority);
+                jsonObject.put("startHour", tempStartHour);
+                jsonObject.put("startMin", tempStartMin);
+                jsonObject.put("endHour", tempEndHour);
+                jsonObject.put("endMin", tempEndMin);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            System.out.println(jsonObject.toString());
+
+        }
     }
 
 

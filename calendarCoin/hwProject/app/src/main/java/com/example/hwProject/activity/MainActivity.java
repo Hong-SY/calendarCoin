@@ -1,18 +1,15 @@
 package com.example.hwProject.activity;
 
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.hwProject.Adapter.MyPagerAdapter;
 import com.example.hwProject.R;
-import com.example.hwProject.fragment.FirstFragment;
-import com.example.hwProject.fragment.SecondFragment;
-import com.example.hwProject.fragment.ThirdFragment;
+import com.example.hwProject.module.DbOpenHelper;
 import com.example.hwProject.objects.Schedule;
 
 import org.json.JSONArray;
@@ -34,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     private MyPagerAdapter adapterViewPager;
     private  ViewPager viewPager;
-
+    private DbOpenHelper mDbOpenHelper;
     /**
      * 2020.03.03 홍석윤
      */
@@ -52,6 +49,22 @@ public class MainActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         adapterViewPager = new MyPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapterViewPager);
+        mDbOpenHelper = new DbOpenHelper(this);
+        mDbOpenHelper.open();
+        mDbOpenHelper.create();
+        String title = "sfasflasknfklasnvkls";
+        String detail = "tksalngiasn";
+        String toDate = "";
+        String fromDate = "";
+        String alarm = "";
+        String priority = "";
+        String startHour = "";
+        String startMin = "";
+        String endHour = "";
+        String endMin = "";
+
+        mDbOpenHelper.insertColumn(title, detail, toDate, fromDate, alarm, priority, startHour, startMin, endHour, endMin);
+        showDatabase("title");
     }
 
 
@@ -114,6 +127,44 @@ public class MainActivity extends AppCompatActivity {
 
         }catch(JSONException ex){
             ex.printStackTrace();
+        }
+    }
+
+    private void showDatabase(String sort){
+
+        Cursor iCursor = mDbOpenHelper.sortColumn(sort);
+        Log.d("showDatabase", "DB Size: " + iCursor.getCount());
+
+        while(iCursor.moveToNext()){
+            // String title, String detail, String toDate, String fromDate, String alarm, String priority, String startHour, String startMin
+            String tempTitle = iCursor.getString(iCursor.getColumnIndex("title"));
+            String tempDetail = iCursor.getString(iCursor.getColumnIndex("detail"));
+            String tempToDate = iCursor.getString(iCursor.getColumnIndex("toDate"));
+            String tempFromDate = iCursor.getString(iCursor.getColumnIndex("fromDate"));
+            String tempAlarm = iCursor.getString(iCursor.getColumnIndex("alarm"));
+            String tempPriority = iCursor.getString(iCursor.getColumnIndex("priority"));
+            String tempStartHour = iCursor.getString(iCursor.getColumnIndex("startHour"));
+            String tempStartMin = iCursor.getString(iCursor.getColumnIndex("startMin"));
+            String tempEndHour = iCursor.getString(iCursor.getColumnIndex("endHour"));
+            String tempEndMin = iCursor.getString(iCursor.getColumnIndex("endMin"));
+
+            JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject.put("title", tempTitle);
+                jsonObject.put("detail", tempDetail);
+                jsonObject.put("toDate", tempToDate);
+                jsonObject.put("fromDate", tempFromDate);
+                jsonObject.put("alarm", tempAlarm);
+                jsonObject.put("priority", tempPriority);
+                jsonObject.put("startHour", tempStartHour);
+                jsonObject.put("startMin", tempStartMin);
+                jsonObject.put("endHour", tempEndHour);
+                jsonObject.put("endMin", tempEndMin);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            System.out.println(jsonObject.toString());
+
         }
     }
 }
