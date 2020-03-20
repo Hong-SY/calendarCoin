@@ -49,22 +49,22 @@ public class MainActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         adapterViewPager = new MyPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapterViewPager);
-        mDbOpenHelper = new DbOpenHelper(this);
-        mDbOpenHelper.open();
-        mDbOpenHelper.create();
-        String title = "sfasflasknfklasnvkls";
-        String detail = "tksalngiasn";
-        String toDate = "";
-        String fromDate = "";
-        String alarm = "";
-        String priority = "";
-        String startHour = "";
-        String startMin = "";
-        String endHour = "";
-        String endMin = "";
-
-        mDbOpenHelper.insertColumn(title, detail, toDate, fromDate, alarm, priority, startHour, startMin, endHour, endMin);
-        showDatabase("title");
+//        mDbOpenHelper = new DbOpenHelper(this);
+//        mDbOpenHelper.open();
+//        mDbOpenHelper.create();
+//        String title = "sfasflasknfklasnvkls";
+//        String detail = "tksalngiasn";
+//        String toDate = "";
+//        String fromDate = "";
+//        String alarm = "";
+//        String priority = "";
+//        String startHour = "";
+//        String startMin = "";
+//        String endHour = "";
+//        String endMin = "";
+//
+//        mDbOpenHelper.insertColumn(title, detail, toDate, fromDate, alarm, priority, startHour, startMin, endHour, endMin);
+//        showDatabase("title");
     }
 
 
