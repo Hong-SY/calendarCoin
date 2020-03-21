@@ -9,6 +9,9 @@ import com.example.hwProject.fragment.FirstFragment;
 import com.example.hwProject.fragment.SecondFragment;
 import com.example.hwProject.fragment.ThirdFragment;
 
+import java.time.LocalDate;
+
+
 public class MyPagerAdapter extends FragmentPagerAdapter {
     private static int NUM_ITEMS = 3;
 
@@ -22,20 +25,27 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
         return NUM_ITEMS;
     }
 
+    /**
+     * 2020.03.19 최홍재
+     * 이제 여기 한정된 수가 아니라 무한하도록 logic만들기
+     * 현재날짜를 알고 그 fragment를 default로 하기
+     */
     // Returns the fragment to display for that page
     @Override
     public Fragment getItem(int position) {
-        switch (position) {
-            case 0:
-                return CalendarFragment.newInstance(2020, 3); //TODO : 최홍재 2020.03.15 여기 석윤이가 만들 달력 받아야함
-            case 1:
-                return SecondFragment.newInstance(1, "Page # 2");
-            case 2:
-                return ThirdFragment.newInstance(2, "Page # 3");
-            default:
-                return null;
+
+            switch (position) {
+                case 0:
+                    return FirstFragment.newInstance(0,"0");
+                case 1:
+                    return CalendarFragment.newInstance(2020, 3);
+                case 2:
+                    return CalendarFragment.newInstance(2020, 4);
+                default:
+                    return null;
+            }
         }
-    }
+
 
     // Returns the page title for the top indicator
     @Override

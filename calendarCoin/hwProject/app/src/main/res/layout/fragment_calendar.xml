@@ -1,14 +1,91 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.hwProject.fragment.CalendarFragment">
-
+    android:orientation="vertical">
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/calendarTextView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-       />
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/testTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="test"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:useDefaultMargins="true"
+            android:columnCount="7">
+
+            <!-- 2020.03.18 홍재 : 달력에 날짜 표시하기 -->
+
+            <TextView android:id="@+id/gridView00"/>
+            <TextView android:id="@+id/gridView01"/>
+            <TextView android:id="@+id/gridView02"/>
+            <TextView android:id="@+id/gridView03"/>
+            <TextView android:id="@+id/gridView04"/>
+            <TextView android:id="@+id/gridView05"/>
+            <TextView android:id="@+id/gridView06"/>
+
+            <TextView android:id="@+id/gridView10"/>
+            <TextView android:id="@+id/gridView11"/>
+            <TextView android:id="@+id/gridView12"/>
+            <TextView android:id="@+id/gridView13"/>
+            <TextView android:id="@+id/gridView14"/>
+            <TextView android:id="@+id/gridView15"/>
+            <TextView android:id="@+id/gridView16"/>
+
+            <TextView android:id="@+id/gridView20"/>
+            <TextView android:id="@+id/gridView21"/>
+            <TextView android:id="@+id/gridView22"/>
+            <TextView android:id="@+id/gridView23"/>
+            <TextView android:id="@+id/gridView24"/>
+            <TextView android:id="@+id/gridView25"/>
+            <TextView android:id="@+id/gridView26"/>
+
+            <TextView android:id="@+id/gridView30"/>
+            <TextView android:id="@+id/gridView31"/>
+            <TextView android:id="@+id/gridView32"/>
+            <TextView android:id="@+id/gridView33"/>
+            <TextView android:id="@+id/gridView34"/>
+            <TextView android:id="@+id/gridView35"/>
+            <TextView android:id="@+id/gridView36"/>
+
+            <TextView android:id="@+id/gridView40"/>
+            <TextView android:id="@+id/gridView41"/>
+            <TextView android:id="@+id/gridView42"/>
+            <TextView android:id="@+id/gridView43"/>
+            <TextView android:id="@+id/gridView44"/>
+            <TextView android:id="@+id/gridView45"/>
+            <TextView android:id="@+id/gridView46"/>
+
+            <TextView android:id="@+id/gridView50"/>
+            <TextView android:id="@+id/gridView51"/>
+            <TextView android:id="@+id/gridView52"/>
+            <TextView android:id="@+id/gridView53"/>
+            <TextView android:id="@+id/gridView54"/>
+            <TextView android:id="@+id/gridView55"/>
+            <TextView android:id="@+id/gridView56"/>
+
+
+        </GridLayout>
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
